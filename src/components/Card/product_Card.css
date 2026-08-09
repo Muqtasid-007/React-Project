@@ -1,0 +1,19 @@
+/* Card Extra Polish */
+.group {
+  will-change: transform, box-shadow;
+}
+
+/* Fallback for title truncation if line-clamp plugin isn't in Tailwind */
+.line-clamp-1 {
+  display: -webkit-box;
+  -line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Custom smooth image zoom */
+.group-hover\:scale-108:hover,
+.group:hover .group-hover\:scale-108 {
+  transform: scale(1.08);
+}
+
