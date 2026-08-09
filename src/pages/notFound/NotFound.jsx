@@ -1,33 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router'
 import Navbar from '../../components/navBar/NavBar'
 import './notFound.css'
 
 const NotFound = () => {
   const navigate = useNavigate()
-  const [searchQuery, setSearchQuery] = useState('')
 
   const handleBackHome = () => {
     navigate('/')
   }
-
-  const handleQuickLink = (path) => {
-    navigate(path)
-  }
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    if (searchQuery.trim()) {
-      navigate(`/products?search=${searchQuery}`)
-    }
-  }
-
-  const quickLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'Products', path: '/products' },
-    { label: 'Categories', path: '/categories' },
-    { label: 'About Us', path: '/about' },
-  ]
 
   return (
     <>
@@ -58,38 +39,10 @@ const NotFound = () => {
             </p>
           </div>
 
-          {/* Search Bar */}
-          <form className="search-section" onSubmit={handleSearch}>
-            <input
-              type="text"
-              className="search-input-404"
-              placeholder="Search for products, categories..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button type="submit" className="search-btn">Search</button>
-          </form>
-
           {/* CTA Button */}
           <button className="cta-button" onClick={handleBackHome}>
             ← Back to Home
           </button>
-
-          {/* Quick Links */}
-          <div className="quick-links-section">
-            <p className="quick-links-title">Quick Navigation</p>
-            <div className="quick-links">
-              {quickLinks.map((link, index) => (
-                <button
-                  key={index}
-                  className="quick-link-btn"
-                  onClick={() => handleQuickLink(link.path)}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </>
